@@ -1703,6 +1703,39 @@ async function refreshAtomPrice() {
   if (btn) { btn.textContent = '✓ 실시간'; btn.disabled = false; btn.style.color = '#34d399'; }
 }
 refreshAtomPrice();
+
+// ── 스크롤 진입 애니메이션 (IntersectionObserver) ──
+(function() {
+  const style = document.createElement('style');
+  style.textContent = `
+    .card, .stat-card, .valuation-box, .note-box, .legend, .pipeline-stages {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      animation: none !important;
+    }
+    .card.io-visible, .stat-card.io-visible, .valuation-box.io-visible,
+    .note-box.io-visible, .legend.io-visible, .pipeline-stages.io-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  `;
+  document.head.appendChild(style);
+
+  const targets = document.querySelectorAll(
+    '.card, .stat-card, .valuation-box, .note-box, .legend, .pipeline-stages'
+  );
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('io-visible'), i * 40);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { root: null, threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+  targets.forEach(el => obs.observe(el));
+})();
 </script>
 </body>
 </html>
