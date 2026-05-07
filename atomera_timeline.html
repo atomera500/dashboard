@@ -511,14 +511,17 @@
 
   /* ── 푸터 ── */
   footer {
+    position: relative;
+    z-index: 2;
     text-align: center;
-    padding: 40px;
+    padding: 40px 20px 50px;
     font-family: 'Space Mono', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', monospace;
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 2px;
-    border-top: 1px solid rgba(26,58,92,0.4);
+    font-size: 11px;
+    color: #7a9ab8;
+    letter-spacing: 1.5px;
+    border-top: 1px solid rgba(0,212,255,0.15);
     margin-top: 60px;
+    background: var(--bg);
   }
 
   /* ── 반응형 ── */
@@ -1216,7 +1219,7 @@
 
 <footer>
   ATOMERA INC. (NASDAQ: ATOM) · MST® MEARS SILICON TECHNOLOGY · DATA SOURCE: IR REPORTS 2025–2026 · 1Q26 컨콜 반영
-  <span style="margin-left:18px;color:#5a7a9a;font-size:11px;">made by <span style="color:#00d4ff">100버거</span></span>
+  <span style="margin-left:18px;color:#7a9ab8;font-size:11px;">made by <span style="color:#00d4ff">100버거</span></span>
 </footer>
 
 <script>
@@ -1229,6 +1232,7 @@
   });
 
   // ── 스크롤 애니메이션 (Intersection Observer) ──
+  // iframe 환경 대응: root를 null로 설정해 iframe 뷰포트 기준으로 동작
   const events = document.querySelectorAll('.event');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1237,10 +1241,10 @@
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { root: null, threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
 
   events.forEach((el, i) => {
-    el.style.transitionDelay = (i % 3) * 0.1 + 's';
+    el.style.transitionDelay = (i % 3) * 0.08 + 's';
     observer.observe(el);
   });
 
