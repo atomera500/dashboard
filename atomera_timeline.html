@@ -1246,12 +1246,17 @@
         observer.unobserve(e.target);
       }
     });
-  }, { root: null, threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+  }, { root: null, threshold: 0, rootMargin: '0px 0px 0px 0px' });
 
   events.forEach((el, i) => {
     el.style.transitionDelay = (i % 3) * 0.08 + 's';
     observer.observe(el);
   });
+
+  // fallback: 3초 후에도 안 보이면 강제 표시
+  setTimeout(() => {
+    events.forEach(el => el.classList.add('visible'));
+  }, 3000);
 
   // ── 노드 hover glow 강화 ──
   document.querySelectorAll('.card').forEach(card => {
