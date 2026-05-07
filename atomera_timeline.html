@@ -213,14 +213,6 @@
     grid-template-columns: 1fr 60px 1fr;
     align-items: start;
     margin-bottom: 32px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .event.visible {
-    opacity: 1;
-    transform: translateY(0);
   }
 
   .event.left .card {
@@ -1237,27 +1229,37 @@
     document.getElementById('scrollBar').style.width = pct + '%';
   });
 
-  // ── 스크롤 애니메이션 (Intersection Observer) ──
-  // iframe 환경 대응: root를 null로 설정해 iframe 뷰포트 기준으로 동작
-  const events = document.querySelectorAll('.event');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
+  // ── 스크롤 애니메이션 — pipeline과 동일한 동적 IO 방식 ──
+  (function() {
+    const style = document.createElement('style');
+    style.textContent = `
+      .event {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
       }
-    });
-  }, { root: null, threshold: 0, rootMargin: '0px 0px 0px 0px' });
+      .event.io-visible {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+    `;
+    document.head.appendChild(style);
 
-  events.forEach((el, i) => {
-    el.style.transitionDelay = (i % 3) * 0.08 + 's';
-    observer.observe(el);
-  });
+    const events = document.querySelectorAll('.event');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('io-visible'), i * 60);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { root: null, threshold: 0, rootMargin: '0px' });
 
-  // fallback: 3초 후에도 안 보이면 강제 표시
-  setTimeout(() => {
-    events.forEach(el => el.classList.add('visible'));
-  }, 3000);
+    events.forEach((el, i) => obs.observe(el));
+
+    // fallback: 4초 후 전체 표시
+    setTimeout(() => events.forEach(el => el.classList.add('io-visible')), 4000);
+  })();
 
   // ── 노드 hover glow 강화 ──
   document.querySelectorAll('.card').forEach(card => {
