@@ -523,6 +523,8 @@
 
   /* ── 반응형 ── */
   @media (max-width: 700px) {
+    /* 한국어 단어 중간 줄바꿈 전면 방지 */
+    * { word-break: keep-all; overflow-wrap: break-word; }
     main { padding: 40px 16px 80px; }
     header { padding: 14px 20px; }
     .logo { font-size: 16px; }
@@ -548,6 +550,17 @@
     .event.left .tags { justify-content: flex-start; }
 
     .year-divider { justify-content: flex-start; padding-left: 56px; }
+
+    /* stats 모바일 */
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .stat-num { font-size: 24px; }
+    .stat-label { font-size: 11px; }
+    /* 카드 텍스트 */
+    .card-title { font-size: 13px; }
+    .card-date { font-size: 10px; }
+    .card-desc { font-size: 12px; line-height: 1.6; }
+    .price-badge { font-size: 11px; }
+    .tag { font-size: 9px; }
   }
 @media (min-width:641px){body{zoom:1.2}}
   </style>

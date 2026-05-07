@@ -863,12 +863,24 @@
   }
 
   @media (max-width: 640px) {
+    /* 한국어 단어 중간 줄바꿈 전면 방지 */
+    * { word-break: keep-all; overflow-wrap: break-word; }
     .cards-grid { grid-template-columns: 1fr; }
     .pipeline-stages { gap: 8px; padding: 20px 16px; }
     .stage-item { flex: 0 0 auto; min-width: 140px; max-width: 160px; gap: 6px; }
     .stage-name { font-size: 11px; }
-    .stage-desc { font-size: 10.5px; line-height: 1.45; word-break: keep-all; }
-    .stage-detail { font-size: 10px; line-height: 1.55; max-width: 140px; margin-top: 2px; word-break: keep-all; }
+    .stage-desc { font-size: 10.5px; line-height: 1.45; }
+    .stage-detail { font-size: 10px; line-height: 1.55; max-width: 140px; margin-top: 2px; }
+    /* stats-bar 모바일: 2열 고정 */
+    .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .stat-label { font-size: 10px; letter-spacing: 0.05em; }
+    .stat-value { font-size: 32px; }
+    .stat-sub { font-size: 11px; }
+    /* 카드 내부 텍스트 */
+    .info-label { white-space: nowrap; font-size: 10px; }
+    .info-value { font-size: 11px; }
+    .card-header-title { font-size: 14px; }
+    .phase-label { font-size: 9px; white-space: nowrap; }
     /* Mobile: hide table, show scroll cards */
     .scenario-table { display: none !important; }
     .sc-scroll { display: flex !important; }
