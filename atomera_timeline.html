@@ -523,44 +523,61 @@
 
   /* ── 반응형 ── */
   @media (max-width: 700px) {
-    /* 한국어 단어 중간 줄바꿈 전면 방지 */
+    /* ── 전역 ── */
     * { word-break: keep-all; overflow-wrap: break-word; }
-    main { padding: 40px 16px 80px; }
-    header { padding: 14px 20px; }
-    .logo { font-size: 16px; }
 
-    .timeline::before { left: 24px; }
+    /* ── 컨테이너 ── */
+    main { padding: 32px 14px 70px; }
+    header { padding: 12px 16px; }
+    .logo { font-size: 15px; letter-spacing: 2px; }
+    .header-sub { font-size: 9px; letter-spacing: 1px; }
 
+    /* ── 페이지 타이틀 ── */
+    .page-title { margin-bottom: 40px; }
+    .page-title p { font-size: 11px; letter-spacing: 0.5px; }
+
+    /* ── 범례 ── */
+    .legend { gap: 8px; margin-bottom: 36px; }
+    .legend-item { font-size: 10px; }
+
+    /* ── 타임라인 수직선 ── */
+    .timeline::before { left: 20px; }
+
+    /* ── 이벤트 카드 전체 좌측 정렬 ── */
     .event,
     .event.left .card,
     .event.right .card {
       display: block;
-      padding-left: 56px;
+      padding-left: 48px;
       text-align: left;
     }
-
-    .event .connector {
-      position: absolute;
-      left: 15px;
-      top: 20px;
-    }
-
+    .event .connector { position: absolute; left: 11px; top: 18px; }
     .event .spacer { display: none; }
-    .event { position: relative; }
+    .event { position: relative; margin-bottom: 20px; }
     .event.left .tags { justify-content: flex-start; }
+    .year-divider { justify-content: flex-start; padding-left: 48px; margin: 36px 0 20px; }
+    .year-label { font-size: 11px; letter-spacing: 2px; padding: 5px 14px; }
 
-    .year-divider { justify-content: flex-start; padding-left: 56px; }
+    /* ── 카드 내부 ── */
+    .card { padding: 14px 16px; }
+    .card-date { font-size: 9px; letter-spacing: 1px; }
+    .card-title { font-size: 12px; line-height: 1.45; }
+    .card-desc { font-size: 11px; line-height: 1.65; }
+    .card-desc strong { font-size: 11px; }
 
-    /* stats 모바일 */
-    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .stat-num { font-size: 24px; }
-    .stat-label { font-size: 11px; }
-    /* 카드 텍스트 */
-    .card-title { font-size: 13px; }
-    .card-date { font-size: 10px; }
-    .card-desc { font-size: 12px; line-height: 1.6; }
-    .price-badge { font-size: 11px; }
-    .tag { font-size: 9px; }
+    /* ── 주가 뱃지 ── */
+    .price-badge { font-size: 10px; padding: 3px 8px; flex-wrap: wrap; gap: 4px; }
+
+    /* ── 태그 ── */
+    .tag { font-size: 8px; letter-spacing: 0.5px; padding: 2px 6px; }
+
+    /* ── stats ── */
+    .stats-section { margin-top: 50px; padding-top: 36px; }
+    .stats-title { font-size: 11px; letter-spacing: 2px; margin-bottom: 24px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .stat-box { padding: 18px 12px; }
+    .stat-num { font-size: 22px; }
+    .stat-label { font-size: 10px; line-height: 1.5; }
   }
 @media (min-width:641px){body{zoom:1.2}}
   </style>

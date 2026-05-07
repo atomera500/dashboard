@@ -863,25 +863,59 @@
   }
 
   @media (max-width: 640px) {
-    /* 한국어 단어 중간 줄바꿈 전면 방지 */
+    /* ── 전역 ── */
     * { word-break: keep-all; overflow-wrap: break-word; }
+
+    /* ── 컨테이너 ── */
+    .container { padding: 24px 14px 60px; }
+
+    /* ── 헤더 ── */
+    .header { margin-bottom: 28px; }
+    .header-meta { gap: 10px; flex-direction: column; }
+
+    /* ── 범례 ── */
+    .legend { padding: 14px 16px; gap: 10px; }
+    .legend-item { font-size: 11px; }
+
+    /* ── 파이프라인 단계 ── */
     .cards-grid { grid-template-columns: 1fr; }
-    .pipeline-stages { gap: 8px; padding: 20px 16px; }
-    .stage-item { flex: 0 0 auto; min-width: 140px; max-width: 160px; gap: 6px; }
-    .stage-name { font-size: 11px; }
-    .stage-desc { font-size: 10.5px; line-height: 1.45; }
-    .stage-detail { font-size: 10px; line-height: 1.55; max-width: 140px; margin-top: 2px; }
-    /* stats-bar 모바일: 2열 고정 */
-    .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .stat-label { font-size: 10px; letter-spacing: 0.05em; }
-    .stat-value { font-size: 32px; }
-    .stat-sub { font-size: 11px; }
-    /* 카드 내부 텍스트 */
-    .info-label { white-space: nowrap; font-size: 10px; }
-    .info-value { font-size: 11px; }
-    .card-header-title { font-size: 14px; }
-    .phase-label { font-size: 9px; white-space: nowrap; }
-    /* Mobile: hide table, show scroll cards */
+    .pipeline-stages { gap: 8px; padding: 16px 12px; }
+    .stage-item { flex: 0 0 auto; min-width: 120px; max-width: 140px; gap: 6px; }
+    .stage-name { font-size: 10px; }
+    .stage-desc { font-size: 10px; line-height: 1.45; }
+    .stage-detail { font-size: 9px; line-height: 1.5; max-width: 120px; margin-top: 2px; }
+
+    /* ── stats-bar ── */
+    .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 28px; }
+    .stat-card { padding: 14px 12px; }
+    .stat-label { font-size: 9px; letter-spacing: 0.05em; }
+    .stat-value { font-size: 28px; }
+    .stat-sub { font-size: 10px; line-height: 1.6; }
+
+    /* ── 카드 ── */
+    .card { padding: 18px 16px; border-radius: 12px; }
+    .card-header { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 14px; }
+    .company-name { font-size: 22px; }
+    .company-sub { font-size: 11px; }
+    .status-badge { font-size: 10px; padding: 4px 10px; white-space: normal; align-self: flex-start; }
+
+    /* ── info-row: 좁은 화면에서 세로 배치 ── */
+    .info-row { flex-direction: column; gap: 2px; }
+    .info-label { font-size: 10px; }
+    .info-value { font-size: 12px; text-align: left; line-height: 1.5; }
+
+    /* ── revenue / potential box ── */
+    .revenue-box, .potential-box { flex-direction: column; align-items: flex-start; gap: 4px; padding: 12px 14px; }
+    .revenue-amount { font-size: 20px; }
+    .potential-value { font-size: 18px; }
+
+    /* ── 태그 ── */
+    .tag { font-size: 9px; padding: 3px 7px; }
+
+    /* ── note-box ── */
+    .note-box { font-size: 11px; line-height: 1.65; padding: 12px 14px; }
+
+    /* ── 시나리오 테이블 → 스크롤 카드 ── */
     .scenario-table { display: none !important; }
     .sc-scroll { display: flex !important; }
   }
