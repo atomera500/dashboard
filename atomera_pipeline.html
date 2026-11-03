@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atomera 고객사 파이프라인 현황 — 2026.05</title>
+<title>Atomera 고객사 파이프라인 현황 — 2026.10</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -852,6 +852,16 @@
     background: var(--bg);
   }
 
+
+  /* ── 접기: 이전 경과 · 상세 ── */
+  details.more { margin-top: 14px; border-top: 1px dashed var(--border); padding-top: 10px; }
+  details.more > summary { cursor: pointer; list-style: none; font-family: 'DM Mono', monospace; font-size: 12px; color: #94a3b8; padding: 6px 0; user-select: none; }
+  details.more > summary::-webkit-details-marker { display: none; }
+  details.more > summary:hover { color: #e2e8f0; }
+  details.more .more-arr { display: inline-block; transition: transform 0.2s; }
+  details.more[open] .more-arr { transform: rotate(90deg); }
+  details.more .more-n { margin-left: 4px; font-size: 10px; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 1px 7px; }
+
   /* Note box */
   .note-box {
     background: rgba(245,158,11,0.08);
@@ -938,14 +948,14 @@
     <div class="header-label">ATOMERA INC. (NASDAQ: ATOM) — CUSTOMER PIPELINE TRACKER</div>
     <h1>고객사 계약 현황</h1>
     <div class="header-meta">
-      <div class="meta-item">기준일<span>2026년 8월 4일</span></div>
-      <div class="meta-item">출처<span>어반라이프인서울 (2026.08.04 업데이트)</span></div>
+      <div class="meta-item">기준일<span>2026년 10월 30일</span></div>
+      <div class="meta-item">출처<span>어반라이프인서울 12 · 3Q26 컨콜 (2026.10.30)</span></div>
     </div>
     <div class="header-meta" style="margin-top:10px;padding-top:10px;border-top:1px solid #1e2d45;font-size:13px">
       <div class="meta-item">현재가 (Prev. Close)<span id="plLivePrice" style="color:#00d4ff;font-family:'Bebas Neue',sans-serif;font-size:18px">$8.60</span></div>
-      <div class="meta-item">시가총액<span id="plLiveMktcap" style="color:#a78bfa">$338.8M</span></div>
+      <div class="meta-item">시가총액<span id="plLiveMktcap" style="color:#a78bfa">$336.3M</span></div>
       <div class="meta-item">52주 범위<span id="plLive52w">$1.89 ~ $9.59</span></div>
-      <div class="meta-item">유통주식수<span id="plLiveShares">~39.4M주</span></div>
+      <div class="meta-item">유통주식수<span id="plLiveShares">~39.1M주</span></div>
       <div class="meta-item">소스<span id="plLiveSrc" style="color:#64748b">2Q26 컨콜 2026.08.04</span></div>
       <div class="meta-item"><button id="plRefreshBtn" onclick="refreshAtomPrice()" style="background:#1e2d45;border:1px solid #334155;color:#9ca3af;font-size:10px;padding:3px 10px;border-radius:4px;cursor:pointer;font-family:'DM Mono',monospace;letter-spacing:0.05em">⟳ 실시간</button></div>
     </div>
@@ -955,8 +965,8 @@
   <div class="stats-bar">
     <div class="stat-card">
       <div class="stat-label">공식 계약 체결</div>
-      <div class="stat-value color-purple">5</div>
-      <div class="stat-sub" style="line-height:1.8">STM · Samsung<span style="color:#fbbf24;font-size:10px">(JDA1 유지)</span> · Tower Semi<span style="color:#fbbf24;font-size:10px">(추정)</span><br>Qorvo<span style="color:#fbbf24;font-size:10px">(추정)</span> · GF<span style="color:#fbbf24;font-size:10px">(추정)</span></div>
+      <div class="stat-value color-purple">6</div>
+      <div class="stat-sub" style="line-height:1.8">STM · Samsung<span style="color:#fbbf24;font-size:10px">(JDA1 유지)</span> · Tower Semi<span style="color:#fbbf24;font-size:10px">(추정)</span><br>Qorvo<span style="color:#fbbf24;font-size:10px">(추정)</span> · GF<span style="color:#fbbf24;font-size:10px">(추정)</span><br>IQE<span style="color:#34d399;font-size:10px">(GaN JDA, 2026.10 공식)</span></div>
     </div>
     <div class="stat-card">
       <div class="stat-label">상업 매출 발생</div>
@@ -969,9 +979,9 @@
       <div class="stat-sub">TI<span style="color:#fbbf24;font-size:10px">(추정)</span> · Intel<span style="color:#f59e0b;font-size:10px">(GAA 데모, 추정)</span> · TSMC<span style="color:#f59e0b;font-size:10px">(GAA 데모 추정↑)</span> · Micron<span style="color:#fbbf24;font-size:10px">(추정)</span></div>
     </div>
     <div class="stat-card">
-      <div class="stat-label">Q1 2026 실적 (확정)</div>
-      <div class="stat-value color-yellow" style="font-size:16px">$1.1만</div>
-      <div class="stat-sub">대형 IDM 웨이퍼 납품 수수료<span style="color:#f59e0b;font-size:10px">(TI 추정)</span><br>GaN $4.6만 → 2Q26 이연<br><span style="color:#34d399">2Q26 가이던스: $5~10만</span></div>
+      <div class="stat-label">3Q26 실적 (확정)</div>
+      <div class="stat-value color-yellow" style="font-size:16px">$0</div>
+      <div class="stat-sub">매출 인식 웨이퍼 출하 없음<br>2Q26 $15.8만 <span style="color:#64748b;font-size:10px">(가이던스 $5~10만)</span><br><span style="color:#34d399">4Q26 가이던스: 약 $5만</span><br>현금 $34.8M · 영업현금사용 $3.2M<br>Non-GAAP 순손실 $4.6M · ATM 2분기 연속 미사용</div>
     </div>
   </div>
 
@@ -1015,10 +1025,25 @@
     </div>
   </div>
 
+  <!-- ── 3Q26 컨콜 요약 ── -->
+  <div style="background:#0c1220;border:1px solid #00d4ff44;border-radius:12px;padding:20px 24px;margin-bottom:40px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap">
+      <div style="width:10px;height:10px;background:#00d4ff;border-radius:50%;animation:pulse 2s infinite"></div>
+      <strong style="color:#00d4ff;font-size:14px">3Q26 컨콜 핵심 (2026.10.30)</strong>
+      <span style="background:#00d4ff22;color:#00d4ff;border:1px solid #00d4ff44;border-radius:4px;font-size:10px;padding:2px 8px;font-family:'DM Mono',monospace">회사 발표 사실</span>
+    </div>
+    <div style="color:#9ca3af;font-size:13px;line-height:1.8">
+      <strong style="color:#e2e8f0">GAA:</strong> GAA 개발 4개사 중 <strong style="color:#34d399">3곳과 적극 협력</strong>, 나머지 1곳과 논의 중 (2월 제시한 연간 목표 달성). 2곳은 고객 실리콘에 MST 증착·테스트 진행, 1곳은 초기 평가. 설정된 마일스톤 모두 달성, 중단 사례 없음.<br>
+      <strong style="color:#e2e8f0">메모리:</strong> DRAM(HBM 베이스 웨이퍼 · 4F²)과 NAND 양쪽으로 확장. 4F²용 MST 솔루션 출시.<br>
+      <strong style="color:#e2e8f0">GaN:</strong> IQE와 JDA 체결 → 양산 경로 확보. RF GaN 시장 약 $12억 → 수년 내 약 $20억.<br>
+      <strong style="color:#e2e8f0">제품 브랜드 신설:</strong> <span style="color:#34d399">Prima</span> = 고객이 구매하는 MST 시작 웨이퍼(전면 증착) — RF SOI·GaN-on-Si·메모리 등 적용 분야 1년 새 2개 → 6개 · <span style="color:#fbbf24">Selecta</span> = 고객 공정 중간 선택 증착(구 MST1/MST2) — GAA·전력 소자·HBT. CEO: "Prima가 생산 진입이 더 빠를 것"
+    </div>
+  </div>
+
   <!-- Section: 공식 계약 -->
   <div class="section-title">
     공식 계약 (Phase 4 JDA · 파운드리 라이선스)
-    <span class="count-badge">5개사</span>
+    <span class="count-badge">6개사</span>
   </div>
   <div class="cards-grid">
 
@@ -1040,35 +1065,39 @@
       </div>
       <div class="info-rows">
         <div class="info-row">
-          <span class="info-label">계약 형태</span>
-          <span class="info-value highlight">Manufacturing License (Phase 4 설치 계약)</span>
-        </div>
-        <div class="info-row">
           <span class="info-label">적용 분야</span>
-          <div class="tags">
-            <span class="tag">BCD 전력반도체</span>
-            <span class="tag active">FDSOI</span>
-            <span class="tag active">GaN</span>
-            <span class="tag active">RF SOI</span>
-          </div>
+          <div class="tags"><span class="tag">BCD 전력반도체</span><span class="tag active">FDSOI</span><span class="tag active">GaN</span><span class="tag active">RF SOI</span></div>
         </div>
         <div class="info-row">
           <span class="info-label">이슈</span>
           <span class="info-value" style="color:#f87171">BCD110 적용 취소 (타이밍 불일치)<br>→ 다른 제품군 협력 유지</span>
         </div>
         <div class="info-row">
-          <span class="info-label">상태 (1Q26 컨콜)</span>
-          <span class="info-value" style="color:#34d399">CEO: <strong>"가까운 시일 내 협업 재개 확신"</strong><br>SOI 실리콘 결과 기반 상업화 경로 협의 임박<br>FDSOI·GaN·RF SOI 다방면 접점 유지</span>
+          <span class="info-label" style="color:#00d4ff">3Q26 컨콜</span>
+          <span class="info-value" style="color:#e2e8f0">협력 지속, 관계 양호<br>CEO: <strong>"결국 함께 계약할 것, 아직 발표 불가"</strong></span>
         </div>
         <div class="info-row">
-          <span class="info-label">2Q26 컨콜 현황</span>
-          <span class="info-value" style="color:#34d399">사업부들과 작업 지속 중<br>계약 협상 테이블 유지</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label" style="color:#f59e0b">예상 (2Q26 이후)</span>
-          <span class="info-value" style="color:#fbbf24">새로운 어플리케이션향으로 <strong>상업화 재개 가시적</strong></span>
+          <span class="info-label" style="color:#f59e0b">전망</span>
+          <span class="info-value" style="color:#fbbf24">새 어플리케이션향 <strong>상업화 재개 가시적</strong></span>
         </div>
       </div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">3</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label">계약 형태</span>
+          <span class="info-value highlight">Manufacturing License (Phase 4 설치 계약)</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">2Q26 컨콜</span>
+          <span class="info-value" style="color:#cbd5e1">사업부들과 작업 지속, 계약 협상 테이블 유지</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">1Q26 컨콜</span>
+          <span class="info-value" style="color:#cbd5e1">CEO: "가까운 시일 내 협업 재개 확신"<br>FDSOI·GaN·RF SOI 접점 유지</span>
+        </div>
+        </div>
+      </details>
     </div>
 
     <!-- Samsung -->
@@ -1089,34 +1118,36 @@
       </div>
       <div class="info-rows">
         <div class="info-row">
-          <span class="info-label">계약 형태</span>
-          <span class="info-value highlight">JDA1 (공식 공동개발협약, 2021)</span>
-        </div>
-        <div class="info-row">
           <span class="info-label">적용 분야</span>
-          <div class="tags">
-            <span class="tag" style="color:#f87171;border-color:#f8717144">GAA JDP ❌ 2022 중단</span>
-            <span class="tag" style="border-color:#fbbf2466;color:#fbbf24">GAA 장기 재참여 예상</span>
-          </div>
+          <div class="tags"><span class="tag">GAA JDP ❌ 2022 중단</span><span class="tag">GAA 장기 재참여 예상</span></div>
         </div>
         <div class="info-row">
-          <span class="info-label">삼성 GAA 현황</span>
-          <span class="info-value" style="color:#f87171">NMOS 성능 FinFET 대비 열위<br>Inner Spacer 미도입 → Capacitance TSMC 대비 20%↓<br>Inner Spacer 개발에 2~3년 필요 (에피택시 전문가 부족)</span>
+          <span class="info-label" style="color:#00d4ff">3Q26 컨콜 (GAA 공통)</span>
+          <span class="info-value" style="color:#e2e8f0">GAA 4개사 중 3곳 협력 · 1곳 논의 중<br>신규 추가 1곳은 초기 평가 (고객명 미공개)</span>
         </div>
         <div class="info-row">
-          <span class="info-label">MST 기여 가능 분야</span>
-          <span class="info-value" style="color:#34d399">① HKMG 내 MST 삽입 → Inner Spacer 공간 확보 지원<br>② 비소스페이서 MST 대체 → Resistance↓, Performance↑</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">JDA 상태</span>
-          <span class="info-value" style="color:#fbbf24">유효 유지 (2021 체결)</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label" style="color:#f59e0b">예상 (2026 하반기~)</span>
-          <span class="info-value" style="color:#fbbf24">현재 데모 2사 = 인텔 · TSMC 추정으로 변경<br>삼성은 Inner Spacer 문제 해결 후 MST 재참여 예상</span>
+          <span class="info-label" style="color:#f59e0b">전망 (추정)</span>
+          <span class="info-value" style="color:#fbbf24">Inner Spacer 해결 후 MST 재참여 예상</span>
         </div>
       </div>
-      <div class="note-box" style="background:#1a1200;border-color:#f59e0b44;color:#fbbf24">⚠️ 2026.05 분석가 추정 변경: 삼성 GAA Inner Spacer 미도입으로 Capacitance TSMC 대비 20% 열위 → GAA 데모 2사를 <strong>인텔·TSMC로 추정 변경</strong>. 삼성은 GAA 양산 계약 가치 $1B — 장기적으로 MST 도입 필요성은 여전히 높음 (비소스페이서 대체, HKMG 축소).</div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">4</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label">계약 형태</span>
+          <span class="info-value highlight">JDA1 (2021 체결, 유효)</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">GAA 현황 (분석)</span>
+          <span class="info-value" style="color:#f87171">NMOS 성능 FinFET 대비 열위<br>Inner Spacer 미도입 → Capacitance TSMC 대비 20%↓<br>Inner Spacer 개발 2~3년 필요</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">MST 기여 가능</span>
+          <span class="info-value" style="color:#34d399">① HKMG 내 MST 삽입 → Inner Spacer 공간 확보<br>② 비소스페이서 대체 → 저항↓ · 성능↑</span>
+        </div>
+        </div>
+      <div class="note-box" style="background:#1a1200;border-color:#f59e0b44;color:#fbbf24">⚠️ 2026.05 추정 변경: Inner Spacer 미도입에 따른 Capacitance 열위로 GAA 데모 2사를 <strong>인텔·TSMC</strong>로 변경. 삼성 GAA 계약 가치 추정 $1B.</div>
+      </details>
     </div>
 
     <!-- Tower Semiconductor -->
@@ -1137,32 +1168,28 @@
       </div>
       <div class="info-rows">
         <div class="info-row">
-          <span class="info-label">계약 형태</span>
-          <span class="info-value highlight">MSTcad 라이센스 (북미 매출)</span>
+          <span class="info-label">적용 분야</span>
+          <div class="tags"><span class="tag active">RF-SOI</span><span class="tag active">PMIC</span><span class="tag active">CIS</span><span class="tag">Mixed-Signal</span></div>
         </div>
         <div class="info-row">
-          <span class="info-label">적용 분야</span>
-          <div class="tags">
-            <span class="tag active">RF-SOI</span>
-            <span class="tag active">PMIC</span>
-            <span class="tag active">CIS</span>
-            <span class="tag">Mixed-Signal</span>
-          </div>
+          <span class="info-label">최근 컨콜</span>
+          <span class="info-value" style="color:#cbd5e1">1Q26~3Q26 별도 언급 없음</span>
+        </div>
+      </div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">3</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label">계약 형태</span>
+          <span class="info-value highlight">MSTcad 라이선스 (북미 매출)</span>
         </div>
         <div class="info-row">
           <span class="info-label">특이사항</span>
-          <span class="info-value" style="color:#34d399">뉴포트비치 Fab3: RF·SiGe·MEMS<br>인텔 공장 내 라인 보유<br>STM과 고객망 중첩</span>
+          <span class="info-value" style="color:#34d399">뉴포트비치 Fab3: RF·SiGe·MEMS<br>인텔 공장 내 라인 보유 · STM과 고객망 중첩<br>RF·실리콘포토닉스 통합 라인 주목</span>
         </div>
-        <div class="info-row">
-          <span class="info-label">실리콘포토닉스</span>
-          <span class="info-value" style="color:#fbbf24">RF · 실리콘포토닉스 통합 라인 주목</span>
         </div>
-        <div class="info-row">
-          <span class="info-label" style="color:#f59e0b">예상 (1Q26 이후)</span>
-          <span class="info-value" style="color:#64748b">추가 공개 정보 없음 — 업데이트 대기 중 <span style="font-size:11px">(컨콜 별도 언급 없음)</span></span>
-        </div>
-      </div>
-      <div class="note-box">파운드리 라이센스 추정 출처: 10-K 북미 매출 + Atomera 고객사 도표에 'TowerJazz' 명시</div>
+      <div class="note-box">추정 근거: 10-K 북미 매출 + Atomera 고객사 도표의 'TowerJazz' 표기</div>
+      </details>
     </div>
 
     <!-- Qorvo -->
@@ -1183,30 +1210,35 @@
       </div>
       <div class="info-rows">
         <div class="info-row">
-          <span class="info-label">계약 형태</span>
-          <span class="info-value highlight">RF Fabless 라이선스 (10-K 공식 확인)<br><span style="color:#fbbf24;font-size:11px">→ Phase 4 Manufacturing License 전환 협의 중</span></span>
-        </div>
-        <div class="info-row">
           <span class="info-label">적용 분야</span>
-          <div class="tags">
-            <span class="tag active">RF-SOI</span>
-            <span class="tag active">LNA + Switch</span>
-            <span class="tag">5G 프론트엔드</span>
-          </div>
+          <div class="tags"><span class="tag active">RF-SOI</span><span class="tag active">LNA + Switch</span><span class="tag">5G 프론트엔드</span></div>
         </div>
         <div class="info-row">
-          <span class="info-label">현재 상태</span>
-          <span class="info-value" style="color:#34d399">1Q26 컨콜: 고객사 실리콘 웨이퍼 런 결과 나옴<br>TCAD 시뮬레이션 결과 지지 확인<br>상용화 경로(파운드리 연계) 협의 중</span>
+          <span class="info-label" style="color:#00d4ff">3Q26 컨콜 (RF SOI 공통)</span>
+          <span class="info-value" style="color:#e2e8f0">RF SOI 솔루션 검증 완료 · 고처리량 양산 공정 개발 중<br>기판 공급망 확보가 핵심</span>
         </div>
         <div class="info-row">
-          <span class="info-label">고객명 공개</span>
-          <span class="info-value" style="color:#fbbf24">미공개 (Qorvo는 업계 정황 추정)</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label" style="color:#f59e0b">예상 (1Q26 이후)</span>
-          <span class="info-value" style="color:#fbbf24">웨이퍼 평가 종료 → <strong>상업적 전환 논의 단계</strong></span>
+          <span class="info-label" style="color:#f59e0b">전망</span>
+          <span class="info-value" style="color:#fbbf24">웨이퍼 평가 종료 → <strong>상업적 전환 논의</strong></span>
         </div>
       </div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">3</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label">3Q26 컨콜 상세 (RF SOI 공통)</span>
+          <span class="info-value" style="color:#cbd5e1">모두 고객사 실리콘에서 검증<br>증착 속도 향상, 대기압 장비 활용 검토</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">계약 형태</span>
+          <span class="info-value highlight">RF Fabless 라이선스 (10-K 확인)<br><span style="color:#fbbf24;font-size:11px">→ Phase 4 Manufacturing License 전환 협의 중</span></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">1Q26 컨콜</span>
+          <span class="info-value" style="color:#cbd5e1">고객사 실리콘 웨이퍼 런 결과 확보, TCAD 결과와 일치<br>파운드리 연계 상용화 경로 협의 중</span>
+        </div>
+        </div>
+      </details>
     </div>
 
     <!-- GlobalFoundries -->
@@ -1227,31 +1259,79 @@
       </div>
       <div class="info-rows">
         <div class="info-row">
-          <span class="info-label">계약 형태</span>
-          <span class="info-value highlight">JDA2 (두 번째 공동개발협약) — 공식 체결</span>
-        </div>
-        <div class="info-row">
           <span class="info-label">적용 분야</span>
-          <div class="tags">
-            <span class="tag active">RF-SOI</span>
-            <span class="tag">Logic</span>
-          </div>
+          <div class="tags"><span class="tag active">RF-SOI</span><span class="tag">Logic</span></div>
         </div>
         <div class="info-row">
-          <span class="info-label">고객명 공개</span>
-          <span class="info-value" style="color:#fbbf24">미공개 — GF는 업계 정황 추정</span>
+          <span class="info-label" style="color:#00d4ff">3Q26 컨콜</span>
+          <span class="info-value" style="color:#e2e8f0">JDA2 파트너 별도 언급 없음</span>
         </div>
         <div class="info-row">
-          <span class="info-label">현재 상태</span>
-          <span class="info-value" style="color:#34d399">1Q26 컨콜: 웨이퍼 작업 계속 진행 중<br>라이선스 전환 협의 중</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label" style="color:#f59e0b">예상 (1Q26 이후)</span>
-          <span class="info-value" style="color:#fbbf24">Power, RF 웨이퍼 테스트 <strong>마무리 단계</strong></span>
+          <span class="info-label" style="color:#f59e0b">전망</span>
+          <span class="info-value" style="color:#fbbf24">Power·RF 웨이퍼 테스트 <strong>마무리 단계</strong></span>
         </div>
       </div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">3</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label">계약 형태</span>
+          <span class="info-value highlight">JDA2 (두 번째 공동개발협약) 공식 체결</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">2Q26 컨콜</span>
+          <span class="info-value" style="color:#cbd5e1">두 번째 JDA 파트너와 웨이퍼 가동 지속<br>신규 디바이스 테스트 데이터 유입 시작<br>AI 데이터센터 효율·고주파 요구 겨냥</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">1Q26 컨콜</span>
+          <span class="info-value" style="color:#cbd5e1">웨이퍼 작업 진행, 라이선스 전환 협의 중</span>
+        </div>
+        </div>
+      </details>
     </div>
 
+  
+    <!-- IQE -->
+    <div class="card phase4">
+      <div class="card-header">
+        <div>
+          <div class="company-name">IQE</div>
+          <div class="company-sub">영국 화합물 반도체 에피택시 / GaN 제조 파트너</div>
+        </div>
+        <span class="status-badge badge-phase4">JDA (GaN)</span>
+      </div>
+      <div class="phase-track">
+        <div class="phase-track-label"><span>진행 단계</span><span>JDA 체결 (2026.10.22) · 작업 착수</span></div>
+        <div class="phase-bar"><div class="phase-fill" style="background:linear-gradient(90deg,var(--phase4),#9f67ff);width:40%"></div></div>
+      </div>
+      <div class="info-rows">
+        <div class="info-row">
+          <span class="info-label">적용 분야</span>
+          <div class="tags"><span class="tag active">RF GaN-on-Si</span><span class="tag">Power GaN (확장 여지)</span></div>
+        </div>
+        <div class="info-row">
+          <span class="info-label" style="color:#00d4ff">3Q26 컨콜</span>
+          <span class="info-value" style="color:#e2e8f0">6개월 내 최적화 시 수개월 인증 후 웨이퍼 출하 매출 가능 (CEO 예시)<br>"수년이 아닌 단기 작업"</span>
+        </div>
+      </div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">3</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label">3Q26 컨콜 상세</span>
+          <span class="info-value" style="color:#cbd5e1">MST 적용 웨이퍼의 주요 생산자가 될 수 있음</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">계약 형태</span>
+          <span class="info-value highlight">공동개발계약 (JDA) — 2026.10.22 공식 발표</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">내용</span>
+          <span class="info-value" style="color:#34d399">MST 실리콘 기판 위 IQE GaN 에피 최적화<br>파운드리·IDM·팹리스용 샘플 웨이퍼 공급<br>여러 개발 사이클로 다층 구조 최적화</span>
+        </div>
+        </div>
+      </details>
+    </div>
   </div>
 
   <!-- Section: 상업 매출 발생 -->
@@ -1279,46 +1359,46 @@
       </div>
       <div class="info-rows">
         <div class="info-row">
-          <span class="info-label">거래 형태</span>
-          <span class="info-value highlight">MST 증착 웨이퍼 직접 판매</span>
-        </div>
-        <div class="info-row">
           <span class="info-label">적용 분야</span>
-          <div class="tags">
-            <span class="tag active">GaN-on-Si (RF)</span>
-            <span class="tag active">GaN-on-Si (Power)</span>
-            <span class="tag active">TrenchFET</span>
-          </div>
+          <div class="tags"><span class="tag active">GaN-on-Si (RF)</span><span class="tag active">GaN-on-Si (Power)</span><span class="tag active">TrenchFET</span></div>
         </div>
         <div class="info-row">
-          <span class="info-label">특이사항</span>
-          <span class="info-value" style="color:#34d399">자체 Epi + 소자 제조 가능<br>세계 최초 300mm GaN-on-Si 양산<br>4년·$200M TrenchFET 25% 개선 전적</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">채택 이유</span>
-          <span class="info-value">MST가 GaN/Si 격자 불일치 응력 완화<br>("코끼리 4마리 응력"을 버퍼링)</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label" style="color:#f59e0b">예상 (1Q26 이후)</span>
-          <span class="info-value" style="color:#34d399"><strong>2Q26 첫 MST 웨이퍼 공급</strong> — GaN $4.6만 납품 예정</span>
+          <span class="info-label" style="color:#00d4ff">3Q26 컨콜 (웨이퍼 매출 전체)</span>
+          <span class="info-value" style="color:#e2e8f0">3Q26 매출 인식 출하 없음 · 4Q26 약 $5만 예상<br>Prima 후기 논의 고객 다수 (GaN·RF-SOI), 생산 일정 가시성 부족</span>
         </div>
       </div>
       <div class="revenue-box">
         <div>
-          <div class="revenue-label">1Q26 컨콜 확인</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">GaN 웨이퍼 $4.6만 → <span style="color:#f59e0b">2Q26 이연</span></div>
+          <div class="revenue-label">2Q26 매출 (실적)</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px;">가이던스 $5~10만</div>
         </div>
-        <div class="revenue-amount" style="color:#f59e0b">2Q26 납품 예정</div>
+        <div class="revenue-amount">$15.8만</div>
       </div>
-      <div class="revenue-box" style="margin-top:8px">
-        <div>
-          <div class="revenue-label">2Q26 가이던스</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">GaN $4.6만 포함</div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">5</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label">거래 형태</span>
+          <span class="info-value highlight">MST 증착 웨이퍼 직접 판매</span>
         </div>
-        <div class="revenue-amount" style="color:#34d399">$5~10만</div>
-      </div>
-      <div class="note-box" style="margin-top:10px">✅ 1Q26 컨콜: GaN RF 기생채널 해결 돌파구 발표 (5/5 화합물반도체 컨퍼런스). "20년 만에 최고 시트전하 데이터". Synopsys GaN TCAD 협업 확장 + 200mm/300mm 고객 협업 진행 중. RF GaN 시장(무선인프라·방산·6G·위성) 직접 타깃.</div>
-      <div class="note-box" style="margin-top:8px;background:#0a1a12;border-color:#34d39944;color:#34d399">✅ 2Q26 컨콜 (2026.08.04): 스위치 + LNA + 전력 증폭기(PA)를 포함한 완전 통합형 RF 프런트엔드 구현 입증. RF SOI의 고주파 성능·고전력 처리 한계 극복. 다수 신규 잠재 고객들과 협업 진행 중.</div>
+        <div class="info-row">
+          <span class="info-label">특이사항</span>
+          <span class="info-value" style="color:#34d399">자체 Epi + 소자 제조 가능<br>세계 최초 300mm GaN-on-Si 양산<br>TrenchFET 4년·$200M으로 25% 개선한 전적</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">채택 이유</span>
+          <span class="info-value" style="color:#e2e8f0">MST가 GaN/Si 격자 불일치 응력 완화</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">2Q26 컨콜</span>
+          <span class="info-value" style="color:#cbd5e1">스위치 + LNA + PA 완전 통합형 RF 프런트엔드 입증<br>다수 신규 잠재 고객과 협업</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">1Q26 컨콜</span>
+          <span class="info-value" style="color:#cbd5e1">GaN 웨이퍼 $4.6만 → 2Q26 이연<br>GaN RF 기생채널 해결 발표 (5/5) · Synopsys GaN TCAD 확장</span>
+        </div>
+        </div>
+      </details>
     </div>
 
   </div>
@@ -1349,30 +1429,35 @@
       <div class="info-rows">
         <div class="info-row">
           <span class="info-label">적용 분야</span>
-          <div class="tags">
-            <span class="tag active">Power (BCD/NextFET)</span>
-            <span class="tag active">GaN (800V DC)</span>
-            <span class="tag active">Analog</span>
-          </div>
+          <div class="tags"><span class="tag active">Power (BCD/NextFET)</span><span class="tag active">GaN (800V DC)</span><span class="tag active">Analog</span></div>
         </div>
         <div class="info-row">
-          <span class="info-label">최근 상황</span>
-          <span class="info-value" style="color:#34d399">MST-CAD 검증 완료 후<br>대규모 웨이퍼 런 실행</span>
+          <span class="info-label" style="color:#00d4ff">3Q26 컨콜 (대형 아날로그·전력 IDM)</span>
+          <span class="info-value" style="color:#e2e8f0">계획대로 진행 — 차세대 노드 적용 목표 웨이퍼 런 진행 중<br>전기적 테스트·제조성 준비 중심</span>
         </div>
         <div class="info-row">
-          <span class="info-label" style="color:#f59e0b">예상 (1Q26 이후)</span>
-          <span class="info-value" style="color:#fbbf24">Power, RF 웨이퍼 테스트 <strong>마무리 단계</strong></span>
+          <span class="info-label" style="color:#f59e0b">전망</span>
+          <span class="info-value" style="color:#fbbf24">Power·RF 웨이퍼 테스트 마무리 → <strong>여러 분야 계약 협상 진입</strong></span>
+        </div>
+      </div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">4</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label">3Q26 컨콜 상세 (대형 아날로그·전력 IDM)</span>
+          <span class="info-value" style="color:#cbd5e1">엔지니어링팀 긴밀 협력, 일부 웨이퍼 런 완료</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">이전 경과</span>
+          <span class="info-value" style="color:#cbd5e1">MST-CAD 검증 후 대규모 웨이퍼 런 실행</span>
         </div>
         <div class="info-row">
           <span class="info-label">데이터센터</span>
-          <span class="info-value" style="color:#fbbf24">YoY 90% 성장 / 800V DC 아키텍처 대응</span>
+          <span class="info-value" style="color:#e2e8f0">YoY 90% 성장 · 800V DC 아키텍처 대응</span>
         </div>
-        <div class="info-row">
-          <span class="info-label">계약 전망</span>
-          <span class="info-value" style="color:#34d399">다양한 분야 계약 협상 진입 예상</span>
         </div>
-      </div>
-      <div class="note-box">⚡ Scott 언급: "라이선스 및 생산 진입을 위한 첫 번째 단계로 계약으로 이어질 것으로 예상"</div>
+      <div class="note-box">⚡ Scott: "라이선스 및 생산 진입을 위한 첫 단계로 계약으로 이어질 것으로 예상"</div>
+      </details>
     </div>
 
     <!-- Intel -->
@@ -1394,32 +1479,38 @@
       <div class="info-rows">
         <div class="info-row">
           <span class="info-label">적용 분야</span>
-          <div class="tags">
-            <span class="tag active">GAA (18A / 14A)</span>
-          </div>
-        </div>
-        <div class="info-row">
-          <span class="info-label">핵심 성과</span>
-          <span class="info-value" style="color:#34d399">GAA 실제 웨이퍼에 MST 증착 성공<br>SiAs 스페이서 대비 P 도판트 차단 2배 우수</span>
+          <div class="tags"><span class="tag active">GAA (18A / 14A)</span></div>
         </div>
         <div class="info-row">
           <span class="info-label">수율 상황</span>
-          <span class="info-value" style="color:#f87171">18A 수율 개선 시급<br>MST 도입 필요성 매우 높음</span>
+          <span class="info-value" style="color:#f87171">18A 수율 개선 시급 → MST 필요성 높음</span>
         </div>
         <div class="info-row">
-          <span class="info-label">2Q26 컨콜 현황</span>
-          <span class="info-value" style="color:#34d399">물리적 증착 가능성(manufacturability) 마일스톤 통과<br>고객사 구조에서 MST 물리적 증착 가능 입증<br>전기적 검증 진행 중</span>
+          <span class="info-label" style="color:#00d4ff">3Q26 컨콜 (GAA 공통)</span>
+          <span class="info-value" style="color:#e2e8f0">3곳 협력 중 2곳은 고객 실리콘에 MST 증착·테스트<br>설정된 마일스톤 모두 달성, 중단 사례 없음</span>
         </div>
         <div class="info-row">
-          <span class="info-label">라이선스 협의</span>
-          <span class="info-value" style="color:#fbbf24">라이선스 조건이 이미 협의 테이블에 올라온 상태<br>전기적 결과 양호 시 이르면 연내 라이선스 가능<br>결과 재시도 시 최대 9개월 추가 소요 가능</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label" style="color:#f59e0b">예상 (2Q26 이후)</span>
-          <span class="info-value" style="color:#34d399"><strong>전기적 검증 진행 중</strong> — 결과 긍정 시 라이선스 협상 착수</span>
+          <span class="info-label" style="color:#f59e0b">전망</span>
+          <span class="info-value" style="color:#fbbf24">전기적 검증 긍정 시 <strong>라이선스 협상 착수</strong></span>
         </div>
       </div>
-      <div class="note-box" style="background:#0a1a12;border-color:#34d39944;color:#34d399">✅ 2Q26 컨콜 (2026.08.04): 물리적 증착 가능성(manufacturability) 마일스톤 통과. 고객사 구조에서 MST 물리적 증착 가능 입증. 라이선스 조건 협의 테이블에 올라온 상태. 전기적 검증 진행 중.</div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">3</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label">3Q26 컨콜 상세 (GAA 공통)</span>
+          <span class="info-value" style="color:#cbd5e1">마일스톤 세부·완료 시점은 비공개</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">핵심 성과</span>
+          <span class="info-value" style="color:#34d399">GAA 실제 웨이퍼에 MST 증착 성공<br>SiAs 스페이서 대비 P 도판트 차단 2배</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">2Q26 컨콜</span>
+          <span class="info-value" style="color:#cbd5e1">물리적 증착(manufacturability) 마일스톤 통과, 전기적 검증 진행<br>라이선스 조건이 이미 협의 테이블에 올라옴<br>이르면 연말 라이선스, 재시도 시 최대 9개월 추가</span>
+        </div>
+        </div>
+      </details>
     </div>
 
     <!-- Micron -->
@@ -1441,29 +1532,38 @@
       <div class="info-rows">
         <div class="info-row">
           <span class="info-label">적용 분야</span>
-          <div class="tags">
-            <span class="tag active">DRAM (웨이퍼 레벨)</span>
-            <span class="tag active">HBM</span>
-          </div>
+          <div class="tags"><span class="tag active">DRAM (웨이퍼 레벨)</span><span class="tag active">HBM</span></div>
         </div>
         <div class="info-row">
-          <span class="info-label">새로운 방식</span>
-          <span class="info-value" style="color:#34d399">웨이퍼 레벨 MST 증착 도입<br>도판트 확산 제어 — GAA와 동일한 문제 보유</span>
+          <span class="info-label" style="color:#00d4ff">3Q26 컨콜 (메모리)</span>
+          <span class="info-value" style="color:#e2e8f0">4F²용 MST 솔루션 출시 · HBM 베이스 웨이퍼에 적용<br>주요 메모리사 관심 확인, 아직 초기 단계</span>
         </div>
         <div class="info-row">
-          <span class="info-label">2Q26 컨콜 현황</span>
-          <span class="info-value" style="color:#34d399">4F² DRAM 신규 가치 제안 수립<br>MST 스타팅 웨이퍼로 수직 DRAM 트랜지스터 구현 가능, 현재 업계 방식 대비 저렴함 입증<br>여러 고객사와 개념 동의 확인</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">IEEE 컨퍼런스</span>
-          <span class="info-value" style="color:#fbbf24">TCAD 시뮬레이션 완료, 실현 가능성 입증<br>해당 결과 9월 IEEE 컨퍼런스 발표 채택</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label" style="color:#f59e0b">예상 (2Q26 이후)</span>
-          <span class="info-value" style="color:#fbbf24">고객사와 함께 4F² 작업 <strong>본격 추진 예정</strong></span>
+          <span class="info-label" style="color:#f59e0b">전망</span>
+          <span class="info-value" style="color:#fbbf24">고객사와 4F² 작업 <strong>본격 추진</strong></span>
         </div>
       </div>
-      <div class="note-box">2Q26 컨콜 (2026.08.04): 4F² DRAM 신규 가치 제안 수립. MST 스타팅 웨이퍼로 수직 DRAM 트랜지스터 구현 가능, 현재 업계 방식 대비 저렴함 입증. 여러 고객사 개념 동의 확인. TCAD 시뮬레이션 완료 → 9월 IEEE 컨퍼런스 채택.</div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">4</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label">3Q26 컨콜 상세 (메모리)</span>
+          <span class="info-value" style="color:#cbd5e1">HBM 베이스 웨이퍼에 GAA 도핑 노하우 활용</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">접근 방식</span>
+          <span class="info-value" style="color:#34d399">웨이퍼 레벨 MST (Prima)<br>GAA와 같은 도판트 확산 문제 해결</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label" style="color:#00d4ff">SISPAD 2026 (TCAD)</span>
+          <span class="info-value" style="color:#e2e8f0">같은 누설 규격에서 I_ON 2.5~3배, 현실 조건 약 5.5배<br>S/D 에피 2회 + 웨이퍼 본딩 1회 생략<br>MST 4nm 기둥(약 12 µA) > 미적용 8nm 기둥(약 9 µA)</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">2Q26 컨콜</span>
+          <span class="info-value" style="color:#cbd5e1">4F² 가치 제안 수립, 여러 고객사 개념 동의<br>업계 방식 대비 저렴함 입증, TCAD 완료 → 9월 학회 채택</span>
+        </div>
+        </div>
+      </details>
     </div>
 
     <!-- TSMC -->
@@ -1485,37 +1585,39 @@
       <div class="info-rows">
         <div class="info-row">
           <span class="info-label">적용 분야</span>
-          <div class="tags">
-            <span class="tag active">GAA 2nm (N2)</span>
-            <span class="tag active">CFET (차세대)</span>
-          </div>
+          <div class="tags"><span class="tag active">GAA 2nm (N2)</span><span class="tag active">CFET (차세대)</span></div>
         </div>
         <div class="info-row">
-          <span class="info-label">TSMC GAA 현황</span>
-          <span class="info-value" style="color:#34d399">Inner Spacer 도입 → Capacitance 삼성 대비 20% 우위<br>Resistance(Performance)는 삼성 대비 5% 열위<br>→ MST 비소스페이서 대체 시 Resistance 개선 가능</span>
+          <span class="info-label" style="color:#00d4ff">3Q26 컨콜 (GAA 공통)</span>
+          <span class="info-value" style="color:#e2e8f0">고객 실리콘 2곳 · 초기 평가 1곳 · 논의 중 1곳<br>CEO: "3곳 성공 시 모든 GAA·CFET에 MST" (도미노 이론)</span>
         </div>
         <div class="info-row">
-          <span class="info-label">MST 니즈</span>
-          <span class="info-value" style="color:#fbbf24">비소스페이서 MST 대체 → P 도판트 차단 2배 우수<br>채널 정화 → 구동전류 향상, 누설전류 감소</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">현재 상태</span>
-          <span class="info-value" style="color:#34d399">GAA 데모 2사 중 하나로 추정 변경 (1Q26 이후 분석)<br>AMAT EPIC 센터 협력 → MST 기술 적용 접점 확대</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">AMAT EPIC 연계</span>
-          <span class="info-value" style="color:#00d4ff">2026.05.11 AMAT-TSMC EPIC 센터 공동혁신 파트너십 발표<br>차세대 로직 스케일링 재료공학 협력 — MST 직접 수혜</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label" style="color:#f59e0b">예상 (2026 3~4분기)</span>
-          <span class="info-value" style="color:#34d399">전기적 데모 결과 → JDA 협상 착수 가능<br>계약 가치 추정: <strong style="color:#a78bfa">$8B</strong> (GAA 양산 로열티 NPV)</span>
+          <span class="info-label" style="color:#f59e0b">전망 (추정)</span>
+          <span class="info-value" style="color:#fbbf24">전기적 데모 결과 → JDA 협상 착수<br>계약 가치 추정 <strong style="color:#a78bfa">$8B</strong> (GAA 양산 로열티 NPV)</span>
         </div>
       </div>
       <div class="potential-box">
         <div class="potential-label">GAA 라이선스 계약 예상 가치</div>
         <div class="potential-value">$8B</div>
       </div>
-      <div class="note-box" style="background:#0a1a12;border-color:#34d39944;color:#34d399">✅ 2026.05 분석가 추정 업그레이드: TSMC는 Epitaxy 기술 자신감 + Performance(R값) 개선 필요성 → GAA 데모 2사 중 하나로 추정 변경 (기존 삼성 → TSMC). AMAT EPIC 센터에서 TSMC와 재료공학 협력 발표(5월 11일)로 MST 접점 강화.</div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">4</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label">GAA 현황 (분석)</span>
+          <span class="info-value" style="color:#34d399">Inner Spacer 도입 → Capacitance 삼성 대비 20% 우위<br>저항(성능)은 삼성 대비 5% 열위 → MST 비소스페이서 대체로 개선 가능</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">MST 니즈</span>
+          <span class="info-value" style="color:#e2e8f0">P 도판트 차단 2배 우수<br>채널 정화 → 구동전류↑ · 누설전류↓</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">AMAT EPIC 연계</span>
+          <span class="info-value" style="color:#e2e8f0">2026.05.11 AMAT-TSMC 공동혁신 파트너십 — 차세대 로직 재료공학 협력</span>
+        </div>
+        </div>
+      <div class="note-box" style="background:#0a1a12;border-color:#34d39944;color:#34d399">✅ 2026.05 추정 변경: 삼성 → TSMC (Epitaxy 역량 + 저항 개선 필요성, 5/11 AMAT EPIC 협력)</div>
+      </details>
     </div>
 
   </div>
@@ -1546,24 +1648,30 @@
       <div class="info-rows">
         <div class="info-row">
           <span class="info-label">적용 분야</span>
-          <div class="tags">
-            <span class="tag active">HBT (RF)</span>
-            <span class="tag">SiGe</span>
-          </div>
+          <div class="tags"><span class="tag active">HBT (RF)</span><span class="tag">SiGe</span></div>
         </div>
         <div class="info-row">
-          <span class="info-label">현재 상태</span>
-          <span class="info-value" style="color:#60a5fa">4Q25 컨콜에서 첫 잠재 고객<br>논의 시작 발표 (고도난이도 제품)</span>
+          <span class="info-label" style="color:#00d4ff">3Q26 컨콜</span>
+          <span class="info-value" style="color:#e2e8f0">Trench FET·HBT 여러 신규 고객 진전 (Selecta)</span>
+        </div>
+      </div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">3</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label">4Q25 컨콜</span>
+          <span class="info-value" style="color:#cbd5e1">첫 잠재 고객 논의 시작 (고난도 제품)</span>
         </div>
         <div class="info-row">
-          <span class="info-label">잠재 고객(추정)</span>
-          <span class="info-value" style="color:var(--muted)">Skyworks, Broadcom, NXP, STM, TowerSemi, GF 등</span>
+          <span class="info-label" style="color:#f59e0b">잠재 고객 (추정)</span>
+          <span class="info-value" style="color:#fbbf24">Skyworks, Broadcom, NXP, STM, TowerSemi, GF 등</span>
         </div>
         <div class="info-row">
           <span class="info-label">신규 특허</span>
-          <span class="info-value" style="color:#34d399">US-12635155-B2 (신규 등록)<br>BJT 이미터-베이스-콜렉터 MST 초격자<br>RF 5G/6G·광통신·PA 시장 확대</span>
+          <span class="info-value" style="color:#34d399">US-12635155-B2 — BJT 이미터·베이스·콜렉터 MST 초격자<br>RF 5G/6G·광통신·PA 시장</span>
         </div>
-      </div>
+        </div>
+      </details>
     </div>
 
   </div>
@@ -1590,18 +1698,31 @@
         </div>
         <div class="info-row">
           <span class="info-label">MST 효과</span>
-          <span class="info-value" style="color:#34d399">Rsp 56% 감소 실측<br>DrainI 2.3배↑ (nMOS)</span>
+          <span class="info-value" style="color:#34d399">Rsp 56% 감소 실측 · Drain 전류 2.3배↑ (nMOS)</span>
         </div>
         <div class="info-row">
-          <span class="info-label">NVIDIA 연관</span>
-          <span class="info-value" style="color:#fbbf24">Rubin Ultra (Kyber 낙)부터 800V DC 도입<br>GPU당 TrenchFET 수백개 탑재 예상</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">잠재 로열티 추정</span>
-          <span class="info-value" style="color:#a78bfa">$10~30M/년 (20% 침투율 가정)</span>
+          <span class="info-label" style="color:#00d4ff">3Q26 컨콜</span>
+          <span class="info-value" style="color:#e2e8f0">여러 신규 고객과 Trench FET·HBT 적용 진전 — AI 데이터센터 전력 공급 변화와 연계</span>
         </div>
       </div>
-      <div class="note-box">⚡ Scott 4Q25 컨콜: "이미 한 고객사가 개발 시작에 관심. 선도업체들과 협의 시작" Infineon + OnSemi 가장 유력<br><span style="color:#f59e0b">▸ 예상 (1Q26 이후):</span> <span style="color:#fbbf24">Infineon · ON Semi — <strong>평가 시작 논의 단계</strong></span></div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">4</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label" style="color:#f59e0b">NVIDIA 연관</span>
+          <span class="info-value" style="color:#fbbf24">Rubin Ultra(Kyber)부터 800V DC 도입 · GPU당 TrenchFET 수백 개</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label" style="color:#f59e0b">잠재 로열티 (추정)</span>
+          <span class="info-value" style="color:#fbbf24">$10~30M/년 (침투율 20% 가정)</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">4Q25 컨콜</span>
+          <span class="info-value" style="color:#cbd5e1">"한 고객사가 개발 시작에 관심, 선도업체들과 협의 시작"</span>
+        </div>
+        </div>
+      <div class="note-box">▸ 전망 (추정): Infineon · ON Semi 가장 유력 — <strong>평가 시작 논의 단계</strong></div>
+      </details>
     </div>
     <!-- NAND AI eSSD -->
     <div class="card evaluation" style="border-top:2px solid #7c3aed;">
@@ -1615,30 +1736,39 @@
       <div class="info-rows">
         <div class="info-row">
           <span class="info-label">드라이버</span>
-          <span class="info-value highlight">AI 스토리지 고도화 (2028 목표): 1,000만→1억 IOPS <span style="color:#64748b;font-size:11px">(업계 추정)</span></span>
+          <span class="info-value highlight">AI 스토리지 고도화 (2028 목표): 1,000만 → 1억 IOPS <span style="color:#64748b;font-size:11px">(업계 추정)</span></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label" style="color:#00d4ff">3Q26 컨콜</span>
+          <span class="info-value" style="color:#e2e8f0">페리 CMOS 다이 게이트 길이 축소 → 어레이 다이와 면적 매칭<br>초기 단계지만 고무적</span>
+        </div>
+      </div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">6</span></summary>
+        <div class="info-rows" style="margin-top:12px">
+        <div class="info-row">
+          <span class="info-label">3Q26 컨콜 상세</span>
+          <span class="info-value" style="color:#cbd5e1">적층 증가로 페리 다이가 어레이 다이보다 빠르게 커져 웨이퍼 본딩 시 면적 불일치 비용 발생</span>
         </div>
         <div class="info-row">
           <span class="info-label">MST 효과</span>
-          <span class="info-value" style="color:#34d399">채널 속도 15~30% 향상 기대<br>V9부터 수율 개선 지원</span>
+          <span class="info-value" style="color:#34d399">채널 속도 15~30% 향상 기대 · V9부터 수율 개선 지원</span>
         </div>
         <div class="info-row">
-          <span class="info-label">SK 하이닉스 목표</span>
-          <span class="info-value" style="color:#fbbf24">26년말 2,500만 IOPS<br>27년말 1억 IOPS (AI-NP)</span>
+          <span class="info-label" style="color:#f59e0b">SK하이닉스 목표</span>
+          <span class="info-value" style="color:#fbbf24">26년 말 2,500만 IOPS → 27년 말 1억 IOPS (AI-NP)</span>
         </div>
         <div class="info-row">
-          <span class="info-label">SK하이닉스 동향</span>
-          <span class="info-value" style="color:#34d399">AMAT EPIC 센터에서 장기 R&amp;D 파트너십 체결<br>(2026.03.10 Globe Newswire 공식 발표)<br>DRAM·HBM 소재·공정 통합·3D 패키징 공동 개발</span>
+          <span class="info-label">2Q26 컨콜</span>
+          <span class="info-value" style="color:#cbd5e1">주요 NAND사: AI로 planar peri 성능 개선이 시급해짐<br>채택 시 MST TAM 두 배 이상</span>
         </div>
         <div class="info-row">
-          <span class="info-label">AMAT 연결고리</span>
-          <span class="info-value" style="color:#60a5fa">AMAT = Atomera 마케팅 파트너<br>EPIC 센터 인프라로 MST 기술 소개·검증 접점 확대</span>
+          <span class="info-label">SK하이닉스 · AMAT</span>
+          <span class="info-value" style="color:#e2e8f0">AMAT EPIC 센터 장기 R&amp;D 파트너십 (2026.03.10) — DRAM·HBM·3D 패키징<br>AMAT = Atomera 공동 마케팅 파트너</span>
         </div>
-        <div class="info-row">
-          <span class="info-label">2Q26 컨콜 현황</span>
-          <span class="info-value" style="color:#34d399">주요 NAND 공급업체로부터 AI로 인해 MST planar peri 성능 개선이 시급해졌다는 확인 수령<br>NAND 플래시 제조사 채택 시 MST TAM 두 배 이상 확대 가능</span>
         </div>
-      </div>
-      <div class="note-box" style="background:#0a1020;border-color:#60a5fa44;color:#60a5fa">AMAT·SK하이닉스 EPIC 센터 파트너십 공식 체결 (2026.03, PDF #10). AMAT은 Atomera의 공동 마케팅 파트너 — EPIC 센터를 통해 MST 기술 소개·검증 접점 확대. 1Q26 컨콜: "메모리는 로직보다 초기 단계".<br>2Q26 컨콜 (2026.08.04): 주요 NAND 공급업체로부터 MST planar peri 성능 개선 필요성 확인 수령. 낸드 입장에서 갑자기 시급한 이슈로 전환.<br><span style="color:#f59e0b">▸ 예상 (2Q26 이후):</span> <span style="color:#fbbf24">SK Hynix — <strong>3D DRAM + NAND 관련 협업</strong> 진행</span></div>
+      <div class="note-box" style="background:#0a1020;border-color:#60a5fa44;color:#60a5fa">▸ 전망 (추정): SK하이닉스 — <strong>3D DRAM + NAND 협업</strong></div>
+      </details>
     </div>
     <!-- CIS 이미지 센서 -->
     <div class="card evaluation" style="border-top:2px solid #10b981;">
@@ -1656,13 +1786,18 @@
         </div>
         <div class="info-row">
           <span class="info-label">MST 효과</span>
-          <span class="info-value" style="color:#34d399">다크커런트 저감<br>도판트 확산 억제<br>NIR 흥수율 1,000배 향상<br>Si 기반 SWIR 감지 가능 (InGaAs 대체)</span>
+          <span class="info-value" style="color:#34d399">다크커런트 저감<br>도판트 확산 억제<br>NIR 흡수율 1,000배 향상<br>Si 기반 SWIR 감지 가능 (InGaAs 대체)</span>
         </div>
+      </div>
+      <details class="more">
+        <summary><span class="more-arr">▸</span> 이전 경과 · 상세 <span class="more-n">1</span></summary>
+        <div class="info-rows" style="margin-top:12px">
         <div class="info-row">
           <span class="info-label">차별점</span>
           <span class="info-value" style="color:#fbbf24">기존 Si Epi 장비로 해결<br>InGaAs 등 화합물반도체 불필요</span>
         </div>
-      </div>
+        </div>
+      </details>
     </div>
   </div>
 
@@ -1674,14 +1809,11 @@
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
       <div style="width:10px;height:10px;background:#00d4ff;border-radius:50%;animation:pulse 2s infinite"></div>
       <strong style="color:#00d4ff;font-size:14px">Applied Materials (AMAT)</strong>
-      <span style="background:#00d4ff22;color:#00d4ff;border:1px solid #00d4ff44;border-radius:4px;font-size:10px;padding:2px 8px;font-family:'Courier New',monospace">1Q26 협업 확대</span>
+      <span style="background:#00d4ff22;color:#00d4ff;border:1px solid #00d4ff44;border-radius:4px;font-size:10px;padding:2px 8px;font-family:'Courier New',monospace">3Q26 업데이트</span>
     </div>
     <div style="color:#9ca3af;font-size:13px;line-height:1.7">
-      <span style="color:#34d399;font-weight:600">1Q26 컨콜 신규 발표:</span>
-      이번 분기 협업 범위 확대. <strong style="color:#e2e8f0">"공동 개발 수준의 완전히 새로운 차원"</strong>으로 격상.
-      AMAT 엔지니어팀과 매주 회의 — 고객 마케팅용 테스트 데이터 공동 개발 중.
-      고객 데모 요청 시 AMAT와 함께 직접 고객사에 들어가 MST 기술 설명·영업 공동 진행.
-      AMAT의 테스트·개발 인프라로 Atomera의 <strong style="color:#e2e8f0">기술적 속도 + 생태계 신뢰도 동시 강화</strong>.
+      <span style="color:#00d4ff;font-weight:600">3Q26 컨콜:</span> 협력 순조·지속. GAA 고객사가 요구한 <strong style="color:#e2e8f0">테스트 비히클 입증</strong>을 긴밀히 지원. 범용 장비는 모두 MST용 구성 가능 (가스 연결 + 전용 소프트웨어) → 사전 구성 장비 불필요, 필요 시 모듈 통합 가능.<br><br>
+      <span style="color:#34d399;font-weight:600">1Q26 컨콜:</span> 협업이 <strong style="color:#e2e8f0">"공동 개발 수준"</strong>으로 격상. 매주 엔지니어링 회의 · 고객 마케팅용 테스트 데이터 공동 개발. 고객 데모 시 AMAT와 함께 방문해 공동 영업.
     </div>
   </div>
 
@@ -1706,7 +1838,7 @@
   </div>
 
   <div class="footer">
-    ATOMERA INC. (NASDAQ: ATOM) — 비공개 추정 포함 / 투자 참고용 자료 — 2026.08.04 (2Q26 컨콜 반영)
+    ATOMERA INC. (NASDAQ: ATOM) — 비공개 추정 포함 / 투자 참고용 자료 — 2026.10.30 (3Q26 컨콜 반영)
     <span style="margin-left:18px;color:#7a9ab8;font-size:11px;">made by <span style="color:#00d4ff">100버거</span></span>
   </div>
 
@@ -1714,7 +1846,7 @@
 
 <script>
 // ── 실시간 주가 (Yahoo Finance via allorigins proxy) ──
-const ATOM_FALLBACK = { price: 8.60, mktcapM: Math.round(39.4*8.60), shares: 39.4, high52: 9.59, low52: 1.89 };
+const ATOM_FALLBACK = { price: 8.60, mktcapM: Math.round(39.1*8.60), shares: 39.1, high52: 9.59, low52: 1.89 };
 const ATOM_CACHE_KEY = 'ATOM_LIVE_CACHE';
 const ATOM_CACHE_TTL = 5 * 60 * 1000;
 function saveAtomCache(d) { try { localStorage.setItem(ATOM_CACHE_KEY, JSON.stringify({...d, ts: Date.now()})); } catch(e) {} }
