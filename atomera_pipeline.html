@@ -421,6 +421,13 @@
     touch-action: pan-x;
   }
 
+  .account-gantt-dialog__hint {
+    display: none;
+    color: #64748b;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .account-gantt__arrow::before,
     .account-gantt__arrow::after { display: none; animation: none; }
@@ -1184,8 +1191,30 @@
     .account-gantt-dialog { width: 100vw; height: 100dvh; max-height: none; border: 0; border-radius: 0; }
     .account-gantt-dialog__content { padding: 12px; }
     .account-gantt-dialog .account-gantt__frame { grid-template-columns: 130px minmax(0, 1fr); }
-    .account-gantt-dialog .account-gantt__grid { min-width: 720px; }
-    .account-gantt-dialog .account-gantt__phase-head { grid-template-columns: repeat(6, 120px); }
+    .account-gantt-dialog .account-gantt__grid { min-width: 900px; }
+    .account-gantt-dialog .account-gantt__phase-head { grid-template-columns: repeat(6, 150px); }
+    .account-gantt-dialog__hint { display: inline; }
+    .account-gantt-dialog.account-gantt-dialog--rotated {
+      position: fixed;
+      inset: auto;
+      top: 50%;
+      left: 50%;
+      width: 100dvh;
+      height: 100dvw;
+      margin: 0;
+      transform: translate(-50%, -50%) rotate(90deg);
+      transform-origin: center;
+    }
+    .account-gantt-dialog.account-gantt-dialog--rotated .account-gantt-dialog__content { padding: 8px 12px; }
+    .account-gantt-dialog.account-gantt-dialog--rotated .account-gantt__frame { grid-template-columns: 145px minmax(0, 1fr); }
+    .account-gantt-dialog.account-gantt-dialog--rotated .account-gantt__grid { min-width: 900px; }
+    .account-gantt-dialog.account-gantt-dialog--rotated .account-gantt__scroll {
+      touch-action: none;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .account-gantt-dialog.account-gantt-dialog--rotated .account-gantt__scroll.is-dragging { cursor: grabbing; }
 
     /* ── stats-bar ── */
     .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 28px; }
@@ -1379,6 +1408,7 @@
   <dialog class="account-gantt-dialog" id="accountGanttDialog" aria-labelledby="accountGanttDialogTitle">
     <div class="account-gantt-dialog__head">
       <strong id="accountGanttDialogTitle">기업별 현재 Phase · 전체 보기</strong>
+      <span class="account-gantt-dialog__hint">도표를 밀어 Phase 이동</span>
       <button class="account-gantt-dialog__close" id="accountGanttClose" type="button" aria-label="전체 보기 닫기">×</button>
     </div>
     <div class="account-gantt-dialog__content" id="accountGanttDialogContent"></div>
@@ -2280,17 +2310,83 @@ refreshAtomPrice();
 
   const placeholder = document.createComment('account-gantt-body');
 
-  function openGantt() {
+  let rotatedFallback = false;
+  let dragState = null;
+
+  function enableRotatedDrag(scroller) {
+    const start = event => {
+      const point = event.touches ? event.touches[0] : event;
+      dragState = { x: point.clientX, y: point.clientY, scrollLeft: scroller.scrollLeft };
+      scroller.classList.add('is-dragging');
+      if (event.pointerId != null && scroller.setPointerCapture) scroller.setPointerCapture(event.pointerId);
+    };
+    const move = event => {
+      if (!dragState) return;
+      const point = event.touches ? event.touches[0] : event;
+      const deltaX = point.clientX - dragState.x;
+      const deltaY = point.clientY - dragState.y;
+      const dominantDelta = Math.abs(deltaX) >= Math.abs(deltaY) ? deltaX : -deltaY;
+      scroller.scrollLeft = dragState.scrollLeft - dominantDelta;
+      event.preventDefault();
+    };
+    const end = () => {
+      dragState = null;
+      scroller.classList.remove('is-dragging');
+    };
+    scroller.addEventListener('pointerdown', start);
+    scroller.addEventListener('pointermove', move);
+    scroller.addEventListener('pointerup', end);
+    scroller.addEventListener('pointercancel', end);
+    scroller.addEventListener('touchstart', start, { passive: true });
+    scroller.addEventListener('touchmove', move, { passive: false });
+    scroller.addEventListener('touchend', end);
+    return () => {
+      scroller.removeEventListener('pointerdown', start);
+      scroller.removeEventListener('pointermove', move);
+      scroller.removeEventListener('pointerup', end);
+      scroller.removeEventListener('pointercancel', end);
+      scroller.removeEventListener('touchstart', start);
+      scroller.removeEventListener('touchmove', move);
+      scroller.removeEventListener('touchend', end);
+    };
+  }
+
+  let disableRotatedDrag = null;
+
+  async function openGantt() {
     if (dialog.open) return;
     ganttBody.before(placeholder);
     content.appendChild(ganttBody);
     dialog.showModal();
     const scroller = ganttBody.querySelector('.account-gantt__scroll');
     if (scroller) scroller.scrollLeft = 0;
+    if (innerWidth < 641) {
+      let landscapeLocked = false;
+      try {
+        if (dialog.requestFullscreen) await dialog.requestFullscreen();
+        if (screen.orientation && screen.orientation.lock) {
+          await screen.orientation.lock('landscape');
+          landscapeLocked = true;
+        }
+      } catch (e) {}
+      if (!landscapeLocked && innerWidth < innerHeight) {
+        rotatedFallback = true;
+        dialog.classList.add('account-gantt-dialog--rotated');
+        if (scroller) disableRotatedDrag = enableRotatedDrag(scroller);
+      }
+    }
   }
 
   function restoreGantt() {
+    if (disableRotatedDrag) disableRotatedDrag();
+    disableRotatedDrag = null;
+    rotatedFallback = false;
+    dialog.classList.remove('account-gantt-dialog--rotated');
     if (placeholder.parentNode) placeholder.replaceWith(ganttBody);
+    if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(() => {});
+    if (screen.orientation && screen.orientation.unlock) {
+      try { screen.orientation.unlock(); } catch (e) {}
+    }
   }
 
   button.addEventListener('click', openGantt);
