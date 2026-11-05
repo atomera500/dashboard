@@ -311,6 +311,10 @@
     background-size: 16.666667% 100%;
   }
 
+  .account-gantt__track--dual .account-gantt__arrow { height: 8px; }
+  .account-gantt__track--dual .account-gantt__arrow:first-child { top: 34%; }
+  .account-gantt__track--dual .account-gantt__arrow:last-child { top: 66%; }
+
   .account-gantt__arrow {
     position: absolute;
     top: 50%;
@@ -380,7 +384,7 @@
 
   .account-gantt__alternate {
     display: grid;
-    grid-template-columns: 180px repeat(3, minmax(0, 1fr));
+    grid-template-columns: 180px repeat(2, minmax(0, 1fr));
     gap: 8px;
     padding: 14px 18px 17px;
     border-top: 1px solid #1e2d45;
@@ -1363,7 +1367,8 @@
         <div class="account-gantt__companies" aria-label="기업 목록">
           <div class="account-gantt__company-head">기업 ↓ / PHASE →</div>
           <div class="account-gantt__company"><strong>STMicroelectronics</strong><small>P4 명시 · Manufacturing License</small></div>
-          <div class="account-gantt__company"><strong>Tower Semi <em>기업명·P4 추정</em></strong><small>Foundry License</small></div>
+          <div class="account-gantt__company"><strong>Samsung <em>기업명 추정</em></strong><small>P3 평가 · P4 JDA 동시</small></div>
+          <div class="account-gantt__company"><strong>Tower Semi <em>기업명 추정</em></strong><small>P3 · Foundry License</small></div>
           <div class="account-gantt__company"><strong>Qorvo <em>기업명 추정</em></strong><small>Integration → P4 협의</small></div>
           <div class="account-gantt__company"><strong>GlobalFoundries <em>기업명·P3 추정</em></strong><small>JDA2 · 웨이퍼 평가 완료</small></div>
           <div class="account-gantt__company"><strong>Texas Instruments <em>기업명 추정</em></strong><small>P3 고도화 명시</small></div>
@@ -1378,13 +1383,14 @@
             <div class="account-gantt__phase-head">
               <div class="account-gantt__phase" style="--phase-color:#64748b"><strong>Phase 1</strong>Planning<small>2</small></div>
               <div class="account-gantt__phase" style="--phase-color:#0891b2"><strong>Phase 2</strong>Setup<small>0</small></div>
-              <div class="account-gantt__phase" style="--phase-color:#3b82f6"><strong>Phase 3</strong>Integration<small>5</small></div>
+              <div class="account-gantt__phase" style="--phase-color:#3b82f6"><strong>Phase 3</strong>Integration<small>7</small></div>
               <div class="account-gantt__phase" style="--phase-color:#8b5cf6"><strong>Phase 4</strong>Installation<small>2</small></div>
               <div class="account-gantt__phase" style="--phase-color:#eab308"><strong>Phase 5</strong>Qualification<small>0</small></div>
               <div class="account-gantt__phase" style="--phase-color:#22c55e"><strong>Phase 6</strong>Production<small>0</small></div>
             </div>
             <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:4;--progress-color:#8b5cf6" role="img" aria-label="STMicroelectronics: Phase 4"></span></div>
-            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:4;--progress-color:#8b5cf6" role="img" aria-label="Tower Semi: Phase 4 추정"></span></div>
+            <div class="account-gantt__track account-gantt__track--dual"><span class="account-gantt__arrow" style="--phase:3;--progress-color:#3b82f6" role="img" aria-label="Samsung: Phase 3 평가"></span><span class="account-gantt__arrow" style="--phase:4;--progress-color:#8b5cf6" role="img" aria-label="Samsung: Phase 4 JDA"></span></div>
+            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:3;--progress-color:#3b82f6" role="img" aria-label="Tower Semi: Phase 3"></span></div>
             <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:3;--progress-color:#3b82f6" role="img" aria-label="Qorvo: Phase 3, Phase 4 전환 협의"></span></div>
             <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:3;--progress-color:#3b82f6" role="img" aria-label="GlobalFoundries: Phase 3 추정"></span></div>
             <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:3;--progress-color:#3b82f6" role="img" aria-label="Texas Instruments: Phase 3"></span></div>
@@ -1398,7 +1404,6 @@
       <div class="account-gantt__scroll-note">좌우로 밀어 전체 Phase를 확인하세요</div>
       <div class="account-gantt__alternate" aria-label="Phase 미분류 경로">
         <div class="account-gantt__alternate-label"><strong>Phase 미분류 경로</strong><small>JDA·직접 매출 — Phase 1~6와 직접 비교하지 않음</small></div>
-        <div class="account-gantt__alternate-item"><strong>Samsung <em>기업명 추정</em></strong><span>JDA1 유지</span><small>숫자 Phase 미확정 · GAA 재협의 예상</small></div>
         <div class="account-gantt__alternate-item"><strong>IQE</strong><span>GaN JDA</span><small>공동개발 착수</small></div>
         <div class="account-gantt__alternate-item"><strong>Infineon <em>기업명 추정</em></strong><span>직접 매출</span><small>MST 웨이퍼 판매</small></div>
       </div>
