@@ -269,6 +269,8 @@
     overflow-y: hidden;
     scrollbar-color: #334155 #090f19;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
   }
 
   .account-gantt__shield {
@@ -313,7 +315,7 @@
     position: absolute;
     top: 50%;
     left: 2%;
-    width: calc(var(--progress-end) - 2%);
+    width: calc((var(--phase) - .5) * 16.666667% - 2%);
     height: 12px;
     overflow: hidden;
     background: linear-gradient(
@@ -413,6 +415,11 @@
   .account-gantt-dialog__content { height: calc(100% - 52px); overflow: auto; padding: 20px; }
   .account-gantt-dialog .account-gantt__frame { grid-template-columns: 220px minmax(0, 1fr); margin: 0; }
   .account-gantt-dialog .account-gantt__grid { min-width: 780px; }
+  .account-gantt-dialog .account-gantt__scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    touch-action: pan-x;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     .account-gantt__arrow::before,
@@ -1175,8 +1182,10 @@
     .account-gantt__scroll-note { display: block; }
     .account-gantt__alternate { grid-template-columns: 1fr; gap: 7px; padding: 13px 14px 15px; }
     .account-gantt-dialog { width: 100vw; height: 100dvh; max-height: none; border: 0; border-radius: 0; }
-    .account-gantt-dialog.account-gantt-dialog--landscape { position: fixed; inset: auto; top: 50%; left: 50%; width: 100dvh; height: 100dvw; margin: 0; transform: translate(-50%, -50%) rotate(90deg); transform-origin: center; }
     .account-gantt-dialog__content { padding: 12px; }
+    .account-gantt-dialog .account-gantt__frame { grid-template-columns: 130px minmax(0, 1fr); }
+    .account-gantt-dialog .account-gantt__grid { min-width: 720px; }
+    .account-gantt-dialog .account-gantt__phase-head { grid-template-columns: repeat(6, 120px); }
 
     /* ── stats-bar ── */
     .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 28px; }
@@ -1345,15 +1354,15 @@
               <div class="account-gantt__phase" style="--phase-color:#eab308"><strong>Phase 5</strong>Qualification<small>0</small></div>
               <div class="account-gantt__phase" style="--phase-color:#22c55e"><strong>Phase 6</strong>Production<small>0</small></div>
             </div>
-            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--progress-end:58.333%;--progress-color:#8b5cf6" role="img" aria-label="STMicroelectronics: Phase 4"></span></div>
-            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--progress-end:58.333%;--progress-color:#8b5cf6" role="img" aria-label="Tower Semi: Phase 4 추정"></span></div>
-            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--progress-end:41.667%;--progress-color:#3b82f6" role="img" aria-label="Qorvo: Phase 3, Phase 4 전환 협의"></span></div>
-            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--progress-end:41.667%;--progress-color:#3b82f6" role="img" aria-label="GlobalFoundries: Phase 3 추정"></span></div>
-            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--progress-end:41.667%;--progress-color:#3b82f6" role="img" aria-label="Texas Instruments: Phase 3"></span></div>
-            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--progress-end:41.667%;--progress-color:#3b82f6" role="img" aria-label="Intel: Phase 3 추정"></span></div>
-            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--progress-end:8.333%;--progress-color:#64748b" role="img" aria-label="Micron: Phase 1 추정"></span></div>
-            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--progress-end:41.667%;--progress-color:#3b82f6" role="img" aria-label="TSMC: Phase 3 추정"></span></div>
-            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--progress-end:8.333%;--progress-color:#64748b" role="img" aria-label="RF HBT 신규고객: Phase 1 추정"></span></div>
+            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:4;--progress-color:#8b5cf6" role="img" aria-label="STMicroelectronics: Phase 4"></span></div>
+            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:4;--progress-color:#8b5cf6" role="img" aria-label="Tower Semi: Phase 4 추정"></span></div>
+            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:3;--progress-color:#3b82f6" role="img" aria-label="Qorvo: Phase 3, Phase 4 전환 협의"></span></div>
+            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:3;--progress-color:#3b82f6" role="img" aria-label="GlobalFoundries: Phase 3 추정"></span></div>
+            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:3;--progress-color:#3b82f6" role="img" aria-label="Texas Instruments: Phase 3"></span></div>
+            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:3;--progress-color:#3b82f6" role="img" aria-label="Intel: Phase 3 추정"></span></div>
+            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:1;--progress-color:#64748b" role="img" aria-label="Micron: Phase 1 추정"></span></div>
+            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:3;--progress-color:#3b82f6" role="img" aria-label="TSMC: Phase 3 추정"></span></div>
+            <div class="account-gantt__track"><span class="account-gantt__arrow" style="--phase:1;--progress-color:#64748b" role="img" aria-label="RF HBT 신규고객: Phase 1 추정"></span></div>
           </div>
         </div>
       </div>
@@ -2271,29 +2280,17 @@ refreshAtomPrice();
 
   const placeholder = document.createComment('account-gantt-body');
 
-  async function openGantt() {
+  function openGantt() {
     if (dialog.open) return;
     ganttBody.before(placeholder);
     content.appendChild(ganttBody);
     dialog.showModal();
     const scroller = ganttBody.querySelector('.account-gantt__scroll');
     if (scroller) scroller.scrollLeft = 0;
-    if (innerWidth < 641 && dialog.requestFullscreen) {
-      try {
-        await dialog.requestFullscreen();
-        if (screen.orientation && screen.orientation.lock) await screen.orientation.lock('landscape');
-      } catch (e) {}
-    }
-    if (innerWidth < innerHeight) dialog.classList.add('account-gantt-dialog--landscape');
   }
 
   function restoreGantt() {
-    dialog.classList.remove('account-gantt-dialog--landscape');
     if (placeholder.parentNode) placeholder.replaceWith(ganttBody);
-    if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(() => {});
-    if (screen.orientation && screen.orientation.unlock) {
-      try { screen.orientation.unlock(); } catch (e) {}
-    }
   }
 
   button.addEventListener('click', openGantt);
