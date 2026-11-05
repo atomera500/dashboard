@@ -2325,7 +2325,7 @@ refreshAtomPrice();
       const point = event.touches ? event.touches[0] : event;
       const deltaX = point.clientX - dragState.x;
       const deltaY = point.clientY - dragState.y;
-      const dominantDelta = Math.abs(deltaX) >= Math.abs(deltaY) ? deltaX : -deltaY;
+      const dominantDelta = Math.abs(deltaX) >= Math.abs(deltaY) ? deltaX : deltaY;
       scroller.scrollLeft = dragState.scrollLeft - dominantDelta;
       event.preventDefault();
     };
